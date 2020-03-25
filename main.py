@@ -3,18 +3,19 @@ from greedy import Greedy
 def main():
 	
 	print('============================================')
-	print('This program shows cities that can be visited \non your family trip and help you to get the list of cities that have shortest distance between them.')
-	print('So by using this program you can get some cities for stop by \nor multiply your destination for your trip')
+	print('This program shows cities that can be visited \nSo by using this program you can get some cities for stop by \nor multiply your destination for your trip\n')
+	print('-------------------------------------------')
+	print(' \non your family trip and help you to get the list of cities that have shortest distance between them.\n')
 	print('============================================')
-	print('Berikut adalah daftar kota yang kami sediakan:\n(Here the list of the cities that we provide)\n')    
+	print('Here the list of the cities that we provide:\n')    
+	
+	#List Kota
+	kota = set(['Cilegon', 'Tangerang', 'Jakarta', 'Bogor',
+		'Cikampek', 'Bekasi', 'Bandung', 'Cirebon', 'Cimahi', 'Cianjur', 'Garut', 'Sumedang', 'Subang', 'Tasikmalaya',	
+		'Purwokerto', 'Magelang', 'Semarang', 'Jogja', 'Surabaya',
+		'Malang'])
 
- kota = set(['Jakarta', 'Bogor', 'Bandung', 'Bekasi',
-     'Tangerang', 'Lembang', 'Yogyakarta', 'Purwokerto',
-      'Semarang', 'Solo', 'Magelang',
-     'Klaten', 'Garut', 'Cilacap',
-      'Cianjur', 'Gresik',
-      'Probolinggo', 'Surabaya', 'Malang', 'Banyuwangi'])   
-
+	#adjacency list city in Java
 	jarak = {		
         'Cilegon' : {'Tanggerang' : 84},
 		'Tanggerang' : {'Jakarta' : 35, 'Cilegon' : 84},
@@ -37,31 +38,33 @@ def main():
 		'Jogja' : {'Surabaya' : 324, 'Magelang' : 53, 'Semarang' : 129},
 		'Surabaya' : {'Malang' : 94, 'Magelang' : 339, 'Semarang' : 348, 'Jogja' : 324},		
 		'Malang' : {'Surabaya' : 94}
-	}       
+	}
 
-    finish = ' '
-    daftarkota(kota)
-    print('============================================')
-	print('Tulis nama kota asal dan tujuan anda dengan \nhuruf kapital pada huruf pertama (contohnya: Bekasi)')
-	print('-------------------------------------------')
+	finish = ' '
+	daftarkota(kota)
+	print('============================================')
 	print('Please write your departure city and destination with a capital letter in the first letter (example: Bekasi)')
-	
-    start = input('Kota Anda Sekarang : ').strip()
-    start = start.lower()
-    start = ''.join(start[0].upper() + start[1:])
-    if start not in kota:
-        print('\n Format Nama Kota Yang Anda Masukan Salah atau Tidak Terdaftar')
+	print('-------------------------------------------')
 
-    finish = input('Kota Tujuan Anda : ')
-    path = Greedy(jarak, start, finish)
-    print('Kota Asal = ',start)
-    if (path):
-        print('Urutan Kota Berdasarkan Algoritma Greedy : ', end='')
-        for i in path:
-            print(i, end='>')
+	
+	start = input('Your Current City : ').strip()
+	start = start.lower()
+	start = ''.join(start[0].upper() + start[1:])
+	if start not in kota:
+		print('\n The Format Name of City You Enter is Incorrect or Unregistered')
+		
     
-    else:
-        print("Tidak Ditemukan Jalan")
+	finish = input('Your Destination City : ')
+	path = Greedy(jarak, start, finish)
+	print('Current City = ',start)
+	if (path):
+		print('City Order Based On Algoritma Greedy : ', end='')
+		for i in path:
+			print(i, end='>')
+
+	else:
+		print('Path Not Found')
+	
 
 if __name__ == '__main__':
-    main()
+	main()
