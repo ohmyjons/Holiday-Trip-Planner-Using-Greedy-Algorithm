@@ -1,5 +1,4 @@
-
-
+# -*- coding: utf-8 -*-
 def daftarkota(name):
     listkota = []
     count = 0

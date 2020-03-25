@@ -60,7 +60,7 @@ def main():
 	if (path):
 		print('City Order Based On Algoritma Greedy : ', end='')
 		for i in path:
-			print(i, end='>')
+			print(i, end=' -> ')
 
 	else:
 		print('Path Not Found')
