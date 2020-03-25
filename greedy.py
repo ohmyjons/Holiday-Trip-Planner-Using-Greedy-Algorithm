@@ -34,4 +34,9 @@ def greedy(map, start, goal):
             print('now cek at {:5}\tg(n) = {} Kilo\t'.format(c_name, gn_temp))
             if c_name in gn and gn_temp < gn[c_name] or c_name not in gn:
                 if c_name not in gn:
-                    heapq.heappush
+                    heapq.heappush(pq, (gn_temp, c_name)) #when push ti priorytyque
+					print('Masukkan {} Ke Priorty Queue'.format(c_name))
+				parent[c_name] = current #set source to reach city
+				gn[c_name] = gn_temp		#update or set g(n)
+
+	return None
